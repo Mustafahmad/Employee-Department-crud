@@ -1,4 +1,7 @@
 #Employee Department crud using laravel 9
+![Screenshot (13)](https://github.com/Mustafahmad/Employee-Department-crud/assets/115351588/667490af-0325-4d5a-9ab6-cfc210e33e99)
+![Screenshot (12)](https://github.com/Mustafahmad/Employee-Department-crud/assets/115351588/2a74e99b-a896-489e-9279-0dbecf3d58d7)
+
 ![Screenshot (9)](https://github.com/Mustafahmad/Employee-Department-crud/assets/115351588/aa58e6cc-e0c0-421f-9775-76d632beed61)
 ![Screenshot (1)](https://github.com/Mustafahmad/Employee-Department-crud/assets/115351588/7fd6c7d8-0b78-4875-a817-46d1e3b4f4b6)
 ![Screenshot (2)](https://github.com/Mustafahmad/Employee-Department-crud/assets/115351588/d6e0c486-3322-4353-b7b8-b4101e61163f)
