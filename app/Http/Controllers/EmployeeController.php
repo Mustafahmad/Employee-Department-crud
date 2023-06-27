@@ -89,7 +89,7 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required',
             'email' => 'required',
             'address' => 'required',
@@ -99,9 +99,9 @@ class EmployeeController extends Controller
             'department_id' => 'required',
             'role_id' => 'required',
             'designation_id' => 'required',
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
+            'image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048'
         ]);
-        
+    
         $employee->name = $validatedData['name'];
         $employee->email = $validatedData['email'];
         $employee->address = $validatedData['address'];

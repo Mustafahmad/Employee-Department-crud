@@ -1,60 +1,56 @@
-<html lang="en">
-<head>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-</head>
-<body style="background-color: #f4f5f7;">
-  <section>
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col col-lg-6 mb-4 mb-lg-0">
-          <div class="card mb-3" style="border-radius: .5rem;">
-            <div class="row g-0">
-              <div class="col-md-4 gradient-custom text-center text-white"
-                style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                  alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-                <h4>{{$employee->name}}</h4>
-                <p>{{ $employee->role->name}}</p>
-                <i class="far fa-edit mb-5"></i>
+@extends('default')
+@section('content')
+    <section class="h-100 gradient-custom-2">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-lg-9 col-xl-7">
+            <div class="card">
+              <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
+                <div class="ms-4 mt-5 d-flex flex-column" style="width: 200px;">
+                  <img src="{{ asset('images/' . $employee->image) }}"
+                    alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+                    style="width: 200px; z-index: 1;height: 200px">
+                    <a href="/employee.edit/{{ $employee->id }}"  type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                    style='z-index: 1;' >
+                    Edit profile
+                    </a>
+                </div>
+                <div class="ms-3" style="margin-top: 130px;">
+                  <h5>{{$employee->name}}</h5>
+                  <p>{{ $employee->role->name}}</p>
+                </div>
               </div>
-              <div class="col-md-8">
-                <div class="card-body p-4">
-                  <h3><b>Employee's Details</b></h3>
-                  <hr class="mt-0 mb-4">
-                  <div class="row pt-1">
-                    <div class="col-6 mb-3">
-                      <h5><b>Email</b></h5>
-                      <p class="text-muted">{{$employee->email}}</p>
-                    </div>
-                    <div class="col-6 mb-3">
-                      <h5><b>Phone</b></h5>
-                      <p class="text-muted">{{$employee->phone}}</p>
-                    </div>
-                    <div class="col-6 mb-3">
-                      <h5><b>Date of birth</b></h5>
-                      <p class="text-muted">{{$employee->dob}}</p>
-                    </div>
-                    <div class="col-6 mb-3">
-                      <h5><b>Date of join</b></h5>
-                      <p class="text-muted">{{$employee->join}}</p>
-                    </div>
+              <div class="p-4 text-black" style="background-color: #f8f9fa;">
+                <div class="d-flex justify-content-end text-center py-1">
+                  <div>
+                    <p class="mb-1 h5">Email</p>
+                    <p class="small text-muted mb-0">{{ $employee->email }}</p>
                   </div>
-                  <hr class="mt-0 mb-4">
-                  <div class="row pt-1">
-                  <h5><b>Employee Designation</b></h5>
-                    <p>{{ $employee->designation->name }}</p>
-                    <div class="col-6 mb-3">
-                      <h5><b>Address</b></h5>
-                      <p class="text-muted">{{$employee->address}}</p>
-                    </div>
+                  <div class="px-3">
+                    <p class="mb-1 h5">Phone</p>
+                    <p class="small text-muted mb-0">{{ $employee->phone }}</p>
                   </div>
+                  <div>
+                    <p class="mb-1 h5">Birth</p>
+                    <p class="small text-muted mb-0">{{ $employee->dob }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body p-4 text-black">
+                <div class="mb-5">
+                  <p class="lead fw-normal mb-1">About</p>
+                  <div class="p-4" style="background-color: #f8f9fa;">
+                    <p class="font-italic mb-1">{{ $employee->designation->name }}</p>
+                    <p class="font-italic mb-1"> Joins {{ $employee->join }}</p>
+                    <p class="font-italic mb-1">Lives in {{$employee->address}} </p>
+                    <p class="font-italic mb-0">{{ $employee->department->name}}</p>
+                  </div>
+                </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 </body>

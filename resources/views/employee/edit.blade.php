@@ -37,6 +37,7 @@
                      <option value="{{$desg->id}}">{{$desg->name}}</option>
                      @endforeach
                   </select>
+                  <input type="file" name="image" class="form-control m-2" placeholder="Add a picture" value ="{{ $employee->image }}">
                <button type="submit" class="btn btn-danger mt-3 ">Submit</button>
                </form>
             </div>

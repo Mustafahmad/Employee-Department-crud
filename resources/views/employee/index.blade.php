@@ -11,7 +11,6 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Image</th>
                 <th>Update</th>
                 <th>Delete</th>
 
@@ -25,7 +24,6 @@
                     <th scope="row">{{ $index + 1 }}</th>
                         <td><a href="/employee.show/{{ $emp->id }}" class="btn btn-outline-primary">{{ $emp->name }}</a></td>
                         <td>{{ $emp->email }}</td>
-                        <td><img src="{{ $emp->image }}" class="img-responsive" style="max-height:100px; max-width:100px" alt="" srcset=""></td>
                         <td><a href="/employee.edit/{{ $emp->id }}" class="btn btn-outline-primary">Update</a></td>
                         <td>
                         <form action="{{ route('employee.destroy', $emp->id) }}" method="POST">
