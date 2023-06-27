@@ -36,7 +36,6 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        
         $validatedData = $request->validate([
             'name' => 'required',
             'email' => 'required',
@@ -47,23 +46,20 @@ class EmployeeController extends Controller
             'department_id' => 'required',
             'role_id' => 'required',
             'designation_id' => 'required',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
         ]);
-
-        Employee::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'address' => $validatedData['address'],
-            'join' => $validatedData['name'],
-            'dob' => $validatedData['name'],
-            'department_id' => $validatedData['department_id'],
-            'role_id' => $validatedData['role_id'],
-            'designation_id' => $validatedData['designation_id'],
-            'phone' => $validatedData['phone'],
-        ]);
-
-        return redirect()->route('employee.index')->with('Employee has been created');
-
-
+    
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $extension = $image->getClientOriginalExtension();
+            $imageName = $validatedData['name'] . '.' . $extension;
+            $image->move(public_path('images'), $imageName);
+            $validatedData['image'] = $imageName;
+        }
+    
+        Employee::create($validatedData);
+    
+        return redirect()->route('employee.index')->with('success', 'Employee has been created successfully');
     }
 
     /**
@@ -71,7 +67,10 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        //
+        $roles = Role::all();
+        $depts = Department::all();
+        $desgs = Designation::all();
+        return view('employee.show',compact('employee','roles','depts','desgs'));
     }
 
     /**
@@ -100,12 +99,32 @@ class EmployeeController extends Controller
             'department_id' => 'required',
             'role_id' => 'required',
             'designation_id' => 'required',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
         ]);
         
-        $employee->fill($request->post())->save();
-
-        return redirect()->route('employee.index')->with('success','Employee has Been updated successfully');
+        $employee->name = $validatedData['name'];
+        $employee->email = $validatedData['email'];
+        $employee->address = $validatedData['address'];
+        $employee->join = $validatedData['join'];
+        $employee->dob = $validatedData['dob'];
+        $employee->phone = $validatedData['phone'];
+        $employee->department_id = $validatedData['department_id'];
+        $employee->role_id = $validatedData['role_id'];
+        $employee->designation_id = $validatedData['designation_id'];
+    
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $extension = $image->getClientOriginalExtension();
+            $imageName = $validatedData['name'] . '.' . $extension;
+            $image->move(public_path('images'), $imageName);
+            $employee->image = $imageName;
+        }
+    
+        $employee->save();
+    
+        return redirect()->route('employee.index')->with('success', 'Employee has been updated successfully');
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -113,6 +132,6 @@ class EmployeeController extends Controller
     public function destroy(Employee $employee)
     {
         $employee->delete();
-        return redirect()->route('employee.index')->with('Success, Employee has been deleted');
+        return redirect()->route('employee.index')->with('success','Employee has been deleted successfully');
     }
 }

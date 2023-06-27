@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('join');
             $table->string('dob');
             $table->string('phone');
+            $table->string('image');
             $table->bigInteger('department_id')->unsigned();
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
             $table->bigInteger('role_id')->unsigned();

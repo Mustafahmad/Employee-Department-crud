@@ -54,3 +54,4 @@ Route::post('/employee/store',[EmployeeController::class,'store'])->name('employ
 Route::delete('/employee/{employee}',[EmployeeController::class,'destroy'])->name('employee.destroy');
 Route::put('/employee.update/{employee}',[EmployeeController::class,'update'])->name('employee.update');
 Route::get('/employee.edit/{employee}',[EmployeeController::class,'edit'])->name('employee.edit');
+Route::get('/employee.show/{employee}',[EmployeeController::class,'show'])->name('employee.show');

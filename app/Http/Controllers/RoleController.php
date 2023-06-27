@@ -35,7 +35,7 @@ class RoleController extends Controller
         Role::create([
             'name' => $validatedData['name'],
         ]);
-        return redirect()->route('role.index')->with('Success, SuccessFully role Created');
+        return redirect()->route('role.index')->with('success','Role has been created successfully');
     }
 
     /**
@@ -74,6 +74,6 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         $role->delete();
-        return redirect()->route('role.index')->with("Success, Role has been deleted");
+        return redirect()->route('role.index')->with('success','Role has been deleted successfully');
     }
 }

@@ -22,7 +22,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        return view('department.create');
+        return view('department.create')->with('Success,Data is stored');
     }
 
     /**
@@ -36,7 +36,7 @@ class DepartmentController extends Controller
         Department::create([
             'name'=> $validatedData['name']
         ]);
-        return redirect()->route('department.index')->with('Success,Data is stored');
+        return redirect()->route('department.index')->with('success','Department has been created successfully');
 
     }
 
@@ -76,6 +76,6 @@ class DepartmentController extends Controller
     public function destroy(Department $department)
     {
         $department->delete();
-        return redirect()->route('department.index')->with('Success,Department is deleted');
+        return redirect()->route('department.index')->with('success','Department has been deleted successfully');
     }
 }

@@ -42,7 +42,7 @@ class DesignationController extends Controller
         'department_id' => $validatedData['department_id'],
     ]);
     
-    return redirect()->route('designation.index')->with('Success, Designation has been created');
+    return redirect()->route('designation.index')->with('success','Desgination has been created successfully');
     }
 
     /**
@@ -74,7 +74,7 @@ class DesignationController extends Controller
         
         $designation->fill($request->post())->save();
 
-        return redirect()->route('designation.index')->with('success','Desgination has Been updated successfully');
+        return redirect()->route('designation.index')->with('success','Desgination has been updated successfully');
     }
 
     /**
@@ -84,6 +84,6 @@ class DesignationController extends Controller
     {
         $designation->delete();
 
-        return redirect()->route('designation.index')->with('Designation has been deleted');
+        return redirect()->route('designation.index')->with('success','Desgination has been deleted successfully');
     }
 }
